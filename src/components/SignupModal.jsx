@@ -124,7 +124,7 @@ const SignupModal = ({ onClose, showLoginModal }) => {
             className="aws-button"
             disabled={loading}
           >
-            {loading ? 'Creating Account...' : 'Verify email address'}
+            {loading ? 'Creating Account...' : 'Verify email address & Create Account'}
           </button>
           
           <div className="aws-divider">

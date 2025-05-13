@@ -88,7 +88,7 @@ const LoginModal = ({ onClose, showSignupModal }) => {
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
                 required
-                placeholder="••••••••"
+                placeholder="Put your password"
                 className="dark-input"
               />
               <button 
