@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+  --primary-gradient: radial-gradient(circle at top left, #8a2be2, #4169e1);
+  --secondary-gradient: radial-gradient(circle at bottom right, #ff6b6b, #ffa07a);
+  --todo-item-gradient: radial-gradient(circle at center, #ffffff, #f8f9fa);
+  --completed-item-gradient: radial-gradient(circle at center, #e8f5e9, #c8e6c9);
+  --button-gradient: radial-gradient(circle at center, #6a11cb, #2575fc);
+  --danger-gradient: radial-gradient(circle at center, #ff5e62, #ff9966);
+  --form-gradient: radial-gradient(circle at top right, rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7));
+  --cookie-gradient: radial-gradient(circle at bottom left, rgba(0, 0, 0, 0.9), rgba(30, 30, 30, 0.95));
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Nunito', sans-serif; /* Add this line */
+  font-variation-settings: 'wght' 400; /* Default weight */
+}
+
+/* For bold text */
+strong, b, h1, h2, h3, h4, h5, h6 {
+  font-variation-settings: 'wght' 700;
+}
+
+/* Italic text */
+em, i {
+  font-style: italic;
+}
+
+body {
+  /* font-family: 'Poppins', sans-serif; */
+  background: var(--primary-gradient);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #333;
+}
+
+.container {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.app-container {
+  background: var(--form-gradient);
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  padding: 30px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  overflow: hidden;
+  position: relative;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.app-header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+.app-header p {
+  color: #555;
+  font-size: 1rem;
+}
+
+button {
+  cursor: pointer;
+  border: none;
+  outline: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background: var(--button-gradient);
+  color: white;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(106, 17, 203, 0.4);
+}
+
+.btn-danger {
+  background: var(--danger-gradient);
+  color: white;
+}
+
+.btn-danger:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(255, 94, 98, 0.4);
+}
+
+.btn-outline {
+  background: transparent;
+  border: 2px solid #6a11cb;
+  color: #6a11cb;
+}
+
+.btn-outline:hover {
+  background: rgba(106, 17, 203, 0.1);
+}
+
+input {
+  width: 100%;
+  padding: 12px 20px;
+  border-radius: 8px;
+  border: 2px solid rgba(106, 17, 203, 0.2);
+  font-size: 1rem;
+  transition: all 0.3s ease;
+}
+
+input:focus {
+  border-color: #6a11cb;
+  box-shadow: 0 0 0 3px rgba(106, 17, 203, 0.2);
+  outline: none;
+}
+
+@media (max-width: 768px) {
+  .app-container {
+    padding: 20px;
+  }
+  
+  .app-header h1 {
+    font-size: 2rem;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Typewriter effect */
+/* Typewriter Effect Styles */
+.typewriter-container {
+  display: inline-block;
+  position: relative;
+}
+
+.typewriter-text {
+  display: inline-block;
+  background: var(--secondary-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.typewriter-cursor {
+  animation: blink 1s infinite;
+  color: #6a11cb;
+  font-weight: 400;
+  margin-left: 2px;
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1 }
+  50% { opacity: 0 }
+}
+
+.welcome-heading {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
