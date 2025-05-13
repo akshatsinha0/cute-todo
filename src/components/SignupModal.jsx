@@ -22,6 +22,10 @@ const SignupModal = ({ onClose, showLoginModal }) => {
       setError('');
       setLoading(true);
       await registerUser(email, password, name);
+      
+      // Show success message
+      alert("You are successfully signed up!");
+      
       onClose();
     } catch (err) {
       setError(`Registration failed: ${err.message}`);
@@ -38,9 +42,9 @@ const SignupModal = ({ onClose, showLoginModal }) => {
   
   return (
     <div className="modal-backdrop" onClick={onClose}>
-      <div className="modal-content" onClick={(e) => e.stopPropagation()}>
+      <div className="modal-content aws-style" onClick={(e) => e.stopPropagation()}>
         <div className="modal-header">
-          <h2>Create Account</h2>
+          <h2>Sign up for Priority Pulse</h2>
           <button className="modal-close" onClick={onClose}>×</button>
         </div>
         
@@ -49,6 +53,7 @@ const SignupModal = ({ onClose, showLoginModal }) => {
         <form onSubmit={handleSubmit} className="auth-form">
           <div className="form-group">
             <label htmlFor="signup-name">Full Name</label>
+            <p className="field-description">Choose a name for your account. You can change this name in settings later.</p>
             <input 
               type="text" 
               id="signup-name" 
@@ -56,11 +61,13 @@ const SignupModal = ({ onClose, showLoginModal }) => {
               onChange={(e) => setName(e.target.value)}
               required 
               placeholder="Enter your full name"
+              className="aws-input"
             />
           </div>
           
           <div className="form-group">
-            <label htmlFor="signup-email">Email</label>
+            <label htmlFor="signup-email">Email address</label>
+            <p className="field-description">Used for account recovery and notifications</p>
             <input 
               type="email" 
               id="signup-email" 
@@ -68,6 +75,7 @@ const SignupModal = ({ onClose, showLoginModal }) => {
               onChange={(e) => setEmail(e.target.value)}
               required 
               placeholder="Enter your email"
+              className="aws-input"
             />
           </div>
           
@@ -81,6 +89,7 @@ const SignupModal = ({ onClose, showLoginModal }) => {
               required 
               placeholder="Create a password"
               minLength="6"
+              className="aws-input"
             />
           </div>
           
@@ -93,6 +102,7 @@ const SignupModal = ({ onClose, showLoginModal }) => {
               onChange={(e) => setConfirmPassword(e.target.value)}
               required 
               placeholder="Confirm your password"
+              className="aws-input"
             />
           </div>
           
@@ -105,21 +115,29 @@ const SignupModal = ({ onClose, showLoginModal }) => {
               required
             />
             <label htmlFor="agree-terms">
-              I agree to the <a href="#terms">Terms of Service</a> and <a href="#privacy">Privacy Policy</a>
+              I agree to the <a href="#terms" className="aws-link">Terms of Service</a> and <a href="#privacy" className="aws-link">Privacy Policy</a>
             </label>
           </div>
           
           <button 
             type="submit" 
-            className="auth-submit"
+            className="aws-button"
             disabled={loading}
           >
-            {loading ? 'Creating Account...' : 'Sign Up'}
+            {loading ? 'Creating Account...' : 'Verify email address'}
           </button>
           
-          <div className="form-footer">
-            Already have an account? <a href="#" onClick={handleLoginClick}>Log in</a>
+          <div className="aws-divider">
+            <span>OR</span>
           </div>
+          
+          <button 
+            type="button" 
+            className="aws-signin-button"
+            onClick={handleLoginClick}
+          >
+            Sign in to an existing Priority Pulse account
+          </button>
         </form>
       </div>
     </div>
