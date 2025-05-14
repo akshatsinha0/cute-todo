@@ -554,6 +554,8 @@
 .user-info {
   flex: 1;
   overflow: hidden;
+  max-width: calc(100% - 70px);
+  width: 0;
 }
 
 .user-name {
@@ -562,14 +564,6 @@
   overflow: hidden;
   text-overflow: ellipsis;
   color: white;
-}
-
-.user-email {
-  font-size: 0.8rem;
-  color: rgba(255, 255, 255, 0.8);
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
 }
 
 .logout-btn {
@@ -607,3 +601,335 @@
   }
 }
 
+
+/* Enhanced user profiles styles */
+/* Enhanced User Profile Styles */
+.user-profile-sidebar {
+  padding: 15px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+}
+
+.user-profile-header {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 8px;
+  transition: all 0.2s ease;
+}
+
+.user-profile-header:hover {
+  background-color: rgba(255, 255, 255, 0.08);
+}
+
+.user-avatar-container {
+  position: relative;
+  margin-right: 12px;
+}
+
+.user-avatar {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: white;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.user-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.user-status-indicator {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 2px solid #673ab7;
+  transition: background-color 0.3s ease;
+}
+
+.user-status-indicator.online {
+  background-color: #4caf50;
+  box-shadow: 0 0 5px #4caf50;
+}
+
+.user-status-indicator.offline {
+  background-color: #9e9e9e;
+}
+
+.user-status-indicator.busy {
+  background-color: #ff5722;
+}
+
+
+.user-name {
+  font-weight: 600;
+  color: white;
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 0.95rem;
+}
+
+.user-email {
+  display: block;
+  width: 100%;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.dropdown-icon {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.8rem;
+  margin-left: 5px;
+  transition: transform 0.3s ease;
+}
+
+.dropdown-icon.rotated {
+  transform: rotate(180deg);
+}
+
+/* Profile Dropdown Menu */
+.profile-dropdown-menu {
+  position: absolute;
+  top: calc(100% + 5px);
+  left: 15px;
+  right: 15px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 5px 25px rgba(0, 0, 0, 0.2);
+  padding: 15px;
+  z-index: 100;
+  color: #333;
+  animation: fadeInUp 0.3s ease forwards;
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.profile-completion-section {
+  padding-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.profile-completion-section p {
+  margin: 0 0 5px;
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.profile-completion-bar {
+  height: 6px;
+  background: #eee;
+  border-radius: 3px;
+  margin: 8px 0;
+  overflow: hidden;
+}
+
+.profile-completion-progress {
+  height: 100%;
+  background: linear-gradient(45deg, #6a11cb, #2575fc);
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.completion-percentage {
+  font-weight: 600;
+  color: #333;
+  font-size: 0.85rem;
+}
+
+.profile-menu-items {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  margin-bottom: 12px;
+  border-bottom: 1px solid #eee;
+  padding-bottom: 12px;
+}
+
+.profile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 8px;
+  border-radius: 4px;
+  color: #333;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  position: relative;
+  font-size: 0.9rem;
+}
+
+.profile-menu-item:hover {
+  background-color: #f5f5f5;
+}
+
+.menu-icon {
+  font-size: 1rem;
+  color: #673ab7;
+}
+
+.notification-badge {
+  position: absolute;
+  right: 8px;
+  background: #f44336;
+  color: white;
+  font-size: 0.7rem;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logout-item {
+  color: #f44336;
+  border: none;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  font-size: inherit;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.logout-item .menu-icon {
+  color: #f44336;
+}
+
+.profile-info-section {
+  font-size: 0.8rem;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.info-label {
+  color: #666;
+  margin: 0 0 3px;
+  font-size: 0.75rem;
+}
+
+.info-value {
+  color: #333;
+  font-weight: 500;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.account-badge {
+  font-size: 0.75rem;
+  padding: 2px 6px;
+  border-radius: 20px;
+}
+
+.account-badge.free {
+  background-color: #f0f0f0;
+  color: #666;
+}
+
+.account-badge.premium {
+  background-color: #ffd700;
+  color: #333;
+}
+
+.upgrade-link {
+  font-size: 0.75rem;
+  color: #2575fc;
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  text-decoration: none;
+  margin-left: auto;
+}
+
+.upgrade-link:hover {
+  text-decoration: underline;
+}
+
+.verification-status {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.verified-icon {
+  color: #4caf50;
+}
+
+.unverified {
+  color: #f44336;
+  font-size: 0.75rem;
+}
+
+/* Enhance Navigation Icons */
+.sidebar-nav {
+  padding: 10px 0;
+}
+
+.nav-item {
+  padding: 12px 15px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.nav-icon {
+  font-size: 1.1rem;
+  min-width: 20px;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .profile-dropdown-menu {
+    position: fixed;
+    top: 70px;
+    left: 10px;
+    right: 10px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+}
+/* enhanced user profiles styles over */

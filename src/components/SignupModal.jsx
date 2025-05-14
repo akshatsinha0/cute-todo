@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { registerUser } from '../firebase';
+import { getAuth, sendEmailVerification } from 'firebase/auth';
 import '../styles/sidebar.css';
 
 const SignupModal = ({ onClose, showLoginModal }) => {
@@ -21,10 +22,16 @@ const SignupModal = ({ onClose, showLoginModal }) => {
     try {
       setError('');
       setLoading(true);
-      await registerUser(email, password, name);
       
-      // Show success message
-      alert("You are successfully signed up!");
+      // Register user and get user credential
+      const userCredential = await registerUser(email, password, name);
+      
+      // Send verification email
+      const _auth = getAuth();
+      await sendEmailVerification(userCredential.user);
+      
+      // Show success message with verification info
+      alert(`Verification email sent to ${email}! Please check your inbox and verify your email address.`);
       
       onClose();
     } catch (err) {
@@ -145,3 +152,4 @@ const SignupModal = ({ onClose, showLoginModal }) => {
 };
 
 export default SignupModal;
+// This code defines a SignupModal component that allows users to sign up for an account.
