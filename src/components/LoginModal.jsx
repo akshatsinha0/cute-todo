@@ -18,7 +18,7 @@ const LoginModal = ({ onClose, showSignupModal }) => {
       setLoading(true);
       await loginUser(email, password);
       onClose();
-    } catch (_err) {
+    } catch {
       setError('Failed to log in. Please check your credentials.');
     } finally {
       setLoading(false);

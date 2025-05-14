@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { registerUser } from '../firebase';
 import { getAuth, sendEmailVerification } from 'firebase/auth';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import '../styles/sidebar.css';
 
 const SignupModal = ({ onClose, showLoginModal }) => {
@@ -8,9 +9,19 @@ const SignupModal = ({ onClose, showLoginModal }) => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
   const [agreeTerms, setAgreeTerms] = useState(false);
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
+  
+  const toggleConfirmPasswordVisibility = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
   
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -88,29 +99,49 @@ const SignupModal = ({ onClose, showLoginModal }) => {
           
           <div className="form-group">
             <label htmlFor="signup-password">Password</label>
-            <input 
-              type="password" 
-              id="signup-password" 
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required 
-              placeholder="Create a password"
-              minLength="6"
-              className="aws-input"
-            />
+            <div className="password-input-wrapper">
+              <input 
+                type={showPassword ? "text" : "password"}
+                id="signup-password" 
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                required 
+                placeholder="Create a password"
+                minLength="6"
+                className="aws-input"
+              />
+              <button 
+                type="button" 
+                className="password-toggle-btn aws-toggle"
+                onClick={togglePasswordVisibility}
+                aria-label={showPassword ? "Hide password" : "Show password"}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
           
           <div className="form-group">
             <label htmlFor="signup-confirm-password">Confirm Password</label>
-            <input 
-              type="password" 
-              id="signup-confirm-password" 
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
-              required 
-              placeholder="Confirm your password"
-              className="aws-input"
-            />
+            <div className="password-input-wrapper">
+              <input 
+                type={showConfirmPassword ? "text" : "password"}
+                id="signup-confirm-password" 
+                value={confirmPassword}
+                onChange={(e) => setConfirmPassword(e.target.value)}
+                required 
+                placeholder="Confirm your password"
+                className="aws-input"
+              />
+              <button 
+                type="button" 
+                className="password-toggle-btn aws-toggle"
+                onClick={toggleConfirmPasswordVisibility}
+                aria-label={showConfirmPassword ? "Hide password" : "Show password"}
+              >
+                {showConfirmPassword ? <FaEyeSlash /> : <FaEye />}
+              </button>
+            </div>
           </div>
           
           <div className="form-checkbox">
@@ -152,4 +183,3 @@ const SignupModal = ({ onClose, showLoginModal }) => {
 };
 
 export default SignupModal;
-// This code defines a SignupModal component that allows users to sign up for an account.
