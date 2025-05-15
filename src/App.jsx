@@ -42,7 +42,7 @@ const App = () => {
       priority: todoData.priority || 'medium',
       dueDate: todoData.dueDate || null,
       tags: todoData.tags || [],
-    };
+    }; 
 
     setTodos(prevTodos => [...prevTodos, newTodo]);
   }, []);
