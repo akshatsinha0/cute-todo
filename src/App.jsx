@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import TypewriterHeading from './components/TypewriterHeading';
 import TodoForm from './components/TodoForm';
 import TodoList from './components/TodoList';
@@ -32,6 +32,21 @@ const App = () => {
     localStorage.setItem('todos', JSON.stringify(todos));
   }, [todos]);
   
+
+  const addTodo = useCallback((todoData) => {
+    const newTodo = {
+      id: Date.now(),
+      text: typeof todoData === 'string' ? todoData : todoData.text,
+      completed: false,
+      createdAt: new Date().toISOString(),
+      priority: todoData.priority || 'medium',
+      dueDate: todoData.dueDate || null,
+      tags: todoData.tags || [],
+    };
+
+    setTodos(prevTodos => [...prevTodos, newTodo]);
+  }, []);
+
   // Handle shared tasks from URL
   useEffect(() => {
     const urlParams = new URLSearchParams(window.location.search);
@@ -48,21 +63,7 @@ const App = () => {
         console.error('Error parsing shared task:', error);
       }
     }
-  }, []);
-  
-  const addTodo = (todoData) => {
-    const newTodo = {
-      id: Date.now(),
-      text: typeof todoData === 'string' ? todoData : todoData.text,
-      completed: false,
-      createdAt: new Date().toISOString(),
-      priority: todoData.priority || 'medium',
-      dueDate: todoData.dueDate || null,
-      tags: todoData.tags || [],
-    };
-    
-    setTodos([...todos, newTodo]);
-  };
+  }, [addTodo]);
   
   const toggleTodo = (id) => {
     setTodos(
