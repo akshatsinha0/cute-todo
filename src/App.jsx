@@ -44,7 +44,7 @@ const App = () => {
       tags: todoData.tags || [],
     }; 
 
-    setTodos(prevTodos => [...prevTodos, newTodo]);
+    setTodos(prevTodos => [...prevTodos, newTodo]); 
   }, []);
 
   // Handle shared tasks from URL
