@@ -12,6 +12,7 @@ import './index.css';
 import './styles/CalendarView.css';
 import { AuthProvider } from './contexts/AuthContext';
 
+
 const App = () => {
   // Main application state
   const [todos, setTodos] = useState(() => {
