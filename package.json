@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@hello-pangea/dnd": "^16.0.1",
     "@react-spring/core": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "autoprefixer": "^10.4.21",
@@ -18,7 +19,6 @@
     "js-cookie": "^3.0.5",
     "postcss": "^8.5.3",
     "react": "^19.1.0",
-    "react-beautiful-dnd": "^13.1.1",
     "react-cookie-consent": "^9.0.0",
     "react-dom": "^19.1.0",
     "react-icons": "^5.5.0",
@@ -35,7 +35,9 @@
   },
   "resolutions": {
     "@react-spring/**/react": "$react",
-    "@react-spring/**/react-dom": "$react-dom"
+    "@react-spring/**/react-dom": "$react-dom",
+    "@hello-pangea/**/react": "$react",
+    "@hello-pangea/**/react-dom": "$react-dom"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
