@@ -49,7 +49,7 @@ const App = () => {
 
   // Handle shared tasks from URL
   useEffect(() => {  
-    const urlParams = new URLSearchParams(window.location.search);
+    const urlParams = new URLSearchParams(window.location.search); 
     const sharedTask = urlParams.get('share');
     
     if (sharedTask) {
