@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@react-spring/core": "^9.7.5",
     "@react-spring/web": "^9.7.5",
     "autoprefixer": "^10.4.21",
     "firebase": "^11.7.1",
@@ -24,6 +25,17 @@
     "react-router-dom": "^7.6.0",
     "tailwindcss": "^4.1.6",
     "uuid": "^11.1.0"
+  },
+  "overrides": {
+    "@react-spring/web": {
+      "react": "$react",
+      "react-dom": "$react-dom",
+      "@react-spring/core": "$@react-spring/core"
+    }
+  },
+  "resolutions": {
+    "@react-spring/**/react": "$react",
+    "@react-spring/**/react-dom": "$react-dom"
   },
   "devDependencies": {
     "@eslint/js": "^9.25.0",
